@@ -47,22 +47,28 @@ function createNavElement(textElement){
     a.id = textElement +"a";
     li.appendChild(a);
     ul.appendChild(li);
+    let currentSection = document.getElementById(textElement);
+    a.addEventListener("click", ()=> {
+    goToRightSection(currentSection)
+});
     console.log(ul);//only for test code
+}
+//this loop for create five element in nav bar
+let sectionID=0;
+let sections = document.querySelectorAll("section");
+for(var i=0;i<sections.length;i++){
+    // sectionID = "section"+i;
+    sectionID = sections[i].getAttribute("id");
+    createNavElement(sectionID);  //to create all sections
 }
 // this function will scrolling smoothly to the section required --> it's parameter the section getting by Id
 function goToRightSection(sectionRequire){
     sectionRequire.scrollIntoView({behavior: "smooth"});
 }
-//this loop for create five element in nav bar
-var sectionID=0;
-for(var i=1;i<=5;i++){
-    sectionID = "section"+i;
-    createNavElement(sectionID);  
-}
-
+//get the section and it's ancor and when clicked on anchor,it go to the section 
 let section = document.getElementById(sectionID);
 var ancorClicked = document.getElementById(sectionID+"a");
-ancorClicked.onclick = goToRightSection(section);
+// ancorClicked.onclick = goToRightSection(section);
 
 
 
