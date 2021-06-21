@@ -57,9 +57,9 @@ function createNavElement(textElement){
     a.className = "active_class";
     currentSection.className = "active_class";
 });
-a.classList.remove("active_class");
-var c = a.getAttribute("class");
-    console.log("c---  " + c);
+// a.classList.remove("active_class");
+// var c = a.getAttribute("class");
+//     console.log("c---  " + c);
 
     console.log(ul);//only for test code
 }
@@ -72,21 +72,47 @@ for(var i=0;i<sections.length;i++){
     sectionID = sections[i].getAttribute("id");
     createNavElement(sectionID);  //to create all sections
 }
- //getActiveSection using getBoundingClientRect function
+//  //getActiveSection using getBoundingClientRect function
+// for(var i=0;i<sections.length;i++){
+//     sectionID = sections[i].getAttribute("id");
+//     let sec = document.getElementById(sectionID);
+//     // var top = getActiveSection(sec);
+//     //------------------ to get the current section -------------- 
+//     let top = sections[i].getBoundingClientRect().top;
+//     if (top>0 && top<300){
+//         sec.classList.add("your-active-class");
+//     }else if (sections[i].classList.contains("your-active-class")){
+//         sections[i].classList.remove("your-active-class");
+//     }else{
+//         continue;
+//     }
+// }
+
+function activeSection(){
+//getActiveSection using getBoundingClientRect function
+
 for(var i=0;i<sections.length;i++){
+
     sectionID = sections[i].getAttribute("id");
-    let sec = document.getElementById(sectionID);
-    // var top = getActiveSection(sec);
+    
+    // let sec = document.getElementById(sectionID);
+    
+    
     //------------------ to get the current section -------------- 
+    
     let top = sections[i].getBoundingClientRect().top;
+    
     if (top>0 && top<300){
-        sec.classList.add("your-active-class");
+        sections[i].classList.add("your-active-class");
+    
     }else if (sections[i].classList.contains("your-active-class")){
         sections[i].classList.remove("your-active-class");
+    }else{
+        continue;
+    }
     }
 }
-
-
+window.addEventListener("scroll", activeSection);
 
 
 // this function will scrolling smoothly to the section required --> it's parameter the section getting by Id
@@ -94,20 +120,8 @@ function goToRightSection(sectionRequire){
     sectionRequire.scrollIntoView({behavior: "smooth"});
 }
 
-let section = document.getElementById(sectionID);
-var ancorClicked = document.getElementById(sectionID+"a");
 
 
-// this fuction return the top of every section and need one parameter is the section element getten by ID
-// function getActiveSection(section){
-//     var rectangle = section.getBoundingClientRect();
-//     var t = rectangle.top; // t is variable contain the top of the section
-//     return t;
-// }
-
-
-
-// when click on the section it is color change in bar and in the page background
 
 
 
