@@ -20,3 +20,5 @@ For specific, detailed instructions, look at the project instructions in the Uda
 1- Devolpe function in app.js file to create five sections in nav bar.
     (There are at least 4 sections that have been added to the page.)
 2- All features are usable across modern desktop, tablet, and phone browsers.
+3- When click on the sections words in nave bar it is scrolling smoothly to this section
+4- change the background color for active section
