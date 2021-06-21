@@ -1,5 +1,5 @@
 /**
- * //01022748319
+ * 
  * 
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
@@ -57,9 +57,9 @@ function createNavElement(textElement){
     a.className = "active_class";
     currentSection.className = "active_class";
 });
-// need to change it's place??!!!!
-a.className = "non_active_class";
-currentSection.className = "non_active_class";
+a.classList.remove("active_class");
+var c = a.getAttribute("class");
+    console.log("c---  " + c);
 
     console.log(ul);//only for test code
 }
@@ -76,26 +76,18 @@ for(var i=0;i<sections.length;i++){
 for(var i=0;i<sections.length;i++){
     sectionID = sections[i].getAttribute("id");
     let sec = document.getElementById(sectionID);
-    var top = getActiveSection(sec);
-    allTop.push(top);
-    console.log("top   --  " + top); // it is not work it is print "top   --  [object Window]"
-}
-//to get the current section 
-/**
- * 1- remove the negative values
- * 2- choose the min is current
- */
-var maxTop = Math.max(...allTop);
-
-let newTops=[];
-for(i of allTop){
-    if (i>0){
-        newTops.push(i);
+    // var top = getActiveSection(sec);
+    //------------------ to get the current section -------------- 
+    let top = sections[i].getBoundingClientRect().top;
+    if (top>0 && top<300){
+        sec.classList.add("your-active-class");
+    }else if (sections[i].classList.contains("your-active-class")){
+        sections[i].classList.remove("your-active-class");
     }
 }
-var minTop = Math.min(...newTops);
-var sectionIndex = allTop.indexOf(minTop);// it is section number of the current section
-let currSection = document.getElementById("section"+sectionIndex+1);
+
+
+
 
 // this function will scrolling smoothly to the section required --> it's parameter the section getting by Id
 function goToRightSection(sectionRequire){
@@ -104,12 +96,14 @@ function goToRightSection(sectionRequire){
 
 let section = document.getElementById(sectionID);
 var ancorClicked = document.getElementById(sectionID+"a");
+
+
 // this fuction return the top of every section and need one parameter is the section element getten by ID
-function getActiveSection(section){
-    var rectangle = section.getBoundingClientRect();
-    var t = rectangle.top; // t is variable contain the top of the section
-    return t;
-}
+// function getActiveSection(section){
+//     var rectangle = section.getBoundingClientRect();
+//     var t = rectangle.top; // t is variable contain the top of the section
+//     return t;
+// }
 
 
 
