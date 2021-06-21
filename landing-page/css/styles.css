@@ -147,8 +147,12 @@ section {
 }
 
 /*------------ my code -----------*/
-
-
+.active_class{
+    background-color: rgb(117, 69, 99);
+}
+.non_active_class{
+    background-color: rgb(110, 106, 109);
+}
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
