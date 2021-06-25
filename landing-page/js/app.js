@@ -1,39 +1,3 @@
-/**
- * 
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
- * Define Global Variables
- * 
-*/
-
-
-/**
- * End Global Variables
- * Start Helper Functionswujiu
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
 // build the nav
 //createNavElement function create elements in nav bar
 //like this <li><a href="section1">Section1</a></li>
@@ -53,27 +17,27 @@ function createNavElement(textElement){
 
     //the next two lines change the color of the section word in nave bar 
     //and the section in page when click on section in nave bar
-    a.className = "active_class";
-    currentSection.className = "active_class";
+    // a.className = "active_class";
+    // currentSection.className = "active_class";
 });
 }
 
 //this loop for create five element in nav bar
 let sectionID=0;
 let sections = document.querySelectorAll("section");
-var allTop = [];
-for(var i=0;i<sections.length;i++){
+let allTop = [];
+for(let i=0;i<sections.length;i++){
     sectionID = sections[i].getAttribute("id");
     createNavElement(sectionID);  //to create all sections
 }
 
-//-------- getActiveSection using getBoundingClientRect function -----------
+//getActiveSection using getBoundingClientRect function
 function activeSection(){
-for(var i=0;i<sections.length;i++){
+for(let i=0;i<sections.length;i++){
 
     sectionID = sections[i].getAttribute("id");
     
-    //------------------ to get the current section -------------- 
+    //to get the current section
     let top = sections[i].getBoundingClientRect().top;
     
     if (top>-50 && top<300){
@@ -86,6 +50,7 @@ for(var i=0;i<sections.length;i++){
     }
     }
 }
+//listener when scrolling page
 window.addEventListener("scroll", activeSection);
 
 
