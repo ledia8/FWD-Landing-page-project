@@ -1,28 +1,37 @@
-// build the nav
-//createNavElement function create elements in nav bar
-//like this <li><a href="section1">Section1</a></li>
-
+// Build menu 
+/**
+ * @description:
+ * createNavElement function create elements in nav bar
+ * like this <li><a href="section1">Section1</a></li>
+ * @param {text} textElement 
+ */
 function createNavElement(textElement){
     let ul = document.getElementById('navbar__list');
-    let li = document.createElement('li');//li --> list
-    let a = document.createElement('a');// a --> ancor
+    let li = document.createElement('li');
+    let a = document.createElement('a');
     a.innerText=textElement;
     a.id = textElement +"a";
     li.appendChild(a);
     ul.appendChild(li);
     let currentSection = document.getElementById(textElement);
+    // TODO: Scroll to section on link click
     a.addEventListener("click", ()=> {
-    //when clicked on anchor,it go to the current section 
+    //TODO: when clicked on anchor,it go to the current section 
     goToRightSection(currentSection)
-
-    //the next two lines change the color of the section word in nave bar 
-    //and the section in page when click on section in nave bar
-    // a.className = "active_class";
-    // currentSection.className = "active_class";
+    //TODO: add css class to active section
+    currentSection.classList.add("your-active-class");
 });
 }
+/**
+ * @description: goToRightSection function will scrolling smoothly to the section required
+    @param {section getting by Id} sectionRequire 
+ */
+    function goToRightSection(sectionRequire){
+        sectionRequire.scrollIntoView({behavior: "smooth"});
+    }
 
-//this loop for create five element in nav bar
+
+//TODO: loop for create five element in nav bar
 let sectionID=0;
 let sections = document.querySelectorAll("section");
 let allTop = [];
@@ -31,7 +40,10 @@ for(let i=0;i<sections.length;i++){
     createNavElement(sectionID);  //to create all sections
 }
 
-//getActiveSection using getBoundingClientRect function
+/**
+ * @description: getActiveSection using getBoundingClientRect function
+ *  Add class 'active' to section when near top of viewport
+ */
 function activeSection(){
 for(let i=0;i<sections.length;i++){
 
@@ -40,7 +52,7 @@ for(let i=0;i<sections.length;i++){
     //to get the current section
     let top = sections[i].getBoundingClientRect().top;
     
-    if (top>-50 && top<300){
+    if (top>-100 && top<300){
         sections[i].classList.add("your-active-class");
     
     }else if (sections[i].classList.contains("your-active-class")){
@@ -50,46 +62,5 @@ for(let i=0;i<sections.length;i++){
     }
     }
 }
-//listener when scrolling page
+//TODO: listener when scrolling page
 window.addEventListener("scroll", activeSection);
-
-
-// this function will scrolling smoothly to the section required -->
-// it's parameter the section getting by Id
-function goToRightSection(sectionRequire){
-    sectionRequire.scrollIntoView({behavior: "smooth"});
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
